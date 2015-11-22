@@ -1,0 +1,22 @@
+<% provide :title, "Lesson" %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-3 " id="your_col">
+    <div class="title">
+      <h2><u><%= @lesson.category.name %></u></h2>
+    </div>
+    <%= form_for [@lesson.category, @lesson] do |f| %>
+      <%= f.fields_for :lesson_words do |t| %>
+        <div class="col-md-6 ">
+          <h3><%= t.object.word.content %></h3>
+          <%= t.collection_radio_buttons :word_answer_id, t.object.word.word_answers, 
+                                          :id, :content do |button| %>
+            <%= button.label(class: "radio"){button.radio_button + button.text} %>
+          <% end %>
+             <hr>
+        </div>
+
+      <% end %>
+      <%= f.submit "Submit", class: "btn btn-primary submit-answer" %>
+    <% end %>
+  </div>
+</div>

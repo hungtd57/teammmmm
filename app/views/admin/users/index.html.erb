@@ -1,0 +1,32 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <div class="container">         
+	  		<table class="table table-bordered">
+		    <thead>
+		      <tr>
+		        <th>Avatar</th>
+		        <th>Username</th>
+		        <th>Delete</th>
+		        <th>Edit</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    <% @users.each do |user| %>
+		      <tr>
+		      <td><%=gravatar_for user%></td>
+		        <td><%= user.name %></td>
+		        <td><%= link_to "Delete", admin_user_path(user), method: :delete,
+                                  data: { confirm: "Are you sure?" }, class: "btn btn-success" %></td>
+		        <td><%= link_to "Edit",edit_admin_user_path(user), class: "btn btn-success"%></td>
+		      </tr>
+		      <% end %>
+		     </tbody>
+		  	</table>
+		</div>
+</ul>
+
+<%= will_paginate %>

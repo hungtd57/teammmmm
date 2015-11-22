@@ -1,0 +1,42 @@
+<% provide(:title, 'Word list') %>
+<div align="center">
+	<%= form_tag words_path, method: :get %>
+		<%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name"), :include_blank => 'None'%>
+		<label class="radio-inline">
+			<%= radio_button_tag 'type', 'all'%>all
+		</label>
+		<label class="radio-inline">
+			<%= radio_button_tag 'type', 'learned'%>learned
+		</label>
+		<label class="radio-inline">
+			<%= radio_button_tag 'type', 'not learned'%>not learned
+		</label>
+		<br/><br/>
+		<%= submit_tag "Filter", :class => 'btn btn-lg btn-primary'%>
+		<%= submit_tag "PDF", :class => 'btn btn-lg btn-primary'%>
+		<br/><br/><hr>
+		<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+		<div class="panel-body">
+	<table class="table">
+	    <thead>
+		<tr>
+			<td>Word</td>
+			<td>Mean</td>
+		</tr>
+		</thead>
+		<tbody>
+		<% @words.each do |word| %>	
+			<tr>
+		    	<td><%= word.content %></td>
+		    	<td><%= word.word_answers.where(correct: true).first.content %></td>
+		  	</tr>
+		<% end %>
+
+	
+	</tbody>
+	</table>
+	</div>
+	</div>
+	</div>
+</div>	

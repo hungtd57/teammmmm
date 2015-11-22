@@ -1,0 +1,8 @@
+<li>
+  <%= categories.name %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "Delete", admin_categories_path(categories), method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
+    | <%= link_to "Edit",edit_admin_categories_path(categories)%>
+  <% end %>
+</li>

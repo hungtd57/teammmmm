@@ -1,0 +1,12 @@
+<tr>
+  <td><%= word.word.content %></td>
+  <td><%= word.word_answer.content %></td>
+  <td>
+    <% if word.word_answer.correct? %>
+      <span class="glyphicon glyphicon-check" style="color:green"></span>
+    <% else %>
+      <span class="glyphicon glyphicon-ban-circle" style="color:red"></span>
+    <% end %>
+  </td>
+  </td>
+</tr>

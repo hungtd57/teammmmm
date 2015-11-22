@@ -1,0 +1,18 @@
+<% provide(:title, 'Word creation') %>
+<h2>Create new word</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+	<%= form_for [:admin, @word] do |f| %>
+    	
+		<%= f.collection_select :category_id, Category.all, :id,:name%>
+      	<%= f.label :content %>
+      	<%= f.text_field :content, class: 'form-control' %>
+
+      	<%= f.fields_for :word_answers do |builder| %>
+      	<td><%= builder.text_field :content, class: "form-control" %></td>
+      	<%= builder.check_box :correct %><br>
+      	<% end %>
+  		<%= f.submit "Create ", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+</div>

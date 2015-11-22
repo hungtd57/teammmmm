@@ -1,0 +1,29 @@
+<% provide(:title, @word.content) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+		<div class="container">         
+	  		<table class="table table-bordered">
+		    <thead>
+		      <tr>
+		        <th>Word</th>
+		        <th>Mean</th>
+		        <th>Answer1</th>
+		        <th>Answer2</th>
+		        <th>Answer3</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td><%= @word.content %></td>
+		        <td><%= @word.word_answers.where(correct: true).first.content %></td>
+		        <td><%= @word.word_answers.where(correct: false).first.content %></td>
+				<td><%= @word.word_answers.where(correct: false).second.content %></td>
+				<td><%= @word.word_answers.where(correct: false).third.content %></td>
+		      </tr>
+		     </tbody>
+		  	</table>
+		</div>
+	</section>
+  </aside>
+</div>

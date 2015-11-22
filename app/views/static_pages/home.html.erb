@@ -1,0 +1,31 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="activities">
+        <%= render 'shared/activity' %>
+      </section>
+    </aside>
+    <section class="Home">
+      <label class="button-inline">
+      <%= button_to('Words list', words_path, :class => 'btn btn-lg btn-primary', method: :get)  %>
+    </label>
+      <label class="button-inline">
+      <%= button_to('Categories', categories_path, :class => 'btn btn-lg btn-primary', method: :get)  %>
+    </label>
+    
+    <hr>
+      <h2>Activities</h2>
+
+  </section>
+  </div>
+<% else %>
+  <div class = "center jumbotron">
+  <h1>Welcome to the Framgia E-Learning System (training UET)</h1>
+  <%= link_to "Sign Up now", "signup", class: "btn btn-lg btn-primary" %>
+  </div>
+  <%= link_to image_tag("logo.jpg", alt: "Rails logo")
+             %>
+<%end%>
